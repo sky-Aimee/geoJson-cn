@@ -8,34 +8,38 @@ import os
 
 
 def write_json_to_file(item, text, level):
-    if not os.path.isdir(level):
-        os.mkdir(level)
-    with open(level + "/" + item + ".json", "w", encoding='utf-8') as json_file:
+    if not os.path.isdir("data/" + level):
+        os.mkdir("data/" + level)
+    with open("data/" + level + "/" + item + ".json", "w", encoding='utf-8') as json_file:
         json.dump(text, json_file, ensure_ascii=False)
 
 
 def write_full_jso_to_file(item, text, level):
-    with open(level + "_full/" + item + ".json", "w", encoding='utf-8') as json_file:
+    if not os.path.isdir("data/" + level + "_full"):
+        os.mkdir("data/" + level + "_full")
+    with open("data/" + level + "_full/" + item + ".json", "w", encoding='utf-8') as json_file:
         json.dump(text, json_file, ensure_ascii=False)
 
+if not os.path.isdir("data"):
+    os.mkdir("data")
 
-if not os.path.isdir("country_full"):
-    os.mkdir("country_full")
-if not os.path.isdir("country"):
-    os.mkdir("country")
+if not os.path.isdir("data/country_full"):
+    os.mkdir("data/country_full")
+if not os.path.isdir("data/country"):
+    os.mkdir("data/country")
 
-if not os.path.isdir("province_full"):
-    os.mkdir("province_full")
-if not os.path.isdir("province"):
-    os.mkdir("province")
+if not os.path.isdir("data/province_full"):
+    os.mkdir("data/province_full")
+if not os.path.isdir("data/province"):
+    os.mkdir("data/province")
 
-if not os.path.isdir("city_full"):
-    os.mkdir("city_full")
-if not os.path.isdir("city"):
-    os.mkdir("city")
+if not os.path.isdir("data/city_full"):
+    os.mkdir("data/city_full")
+if not os.path.isdir("data/city"):
+    os.mkdir("data/city")
 
-if not os.path.isdir("district"):
-    os.mkdir("district")
+if not os.path.isdir("data/district"):
+    os.mkdir("data/district")
 
 context = ssl._create_unverified_context()
 url = "https://geo.datav.aliyun.com/areas_v2/bound/infos.json"
